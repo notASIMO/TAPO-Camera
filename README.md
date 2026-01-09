@@ -5,7 +5,7 @@ A collection of Python tools and scripts for interacting with TP-Link TAPO camer
 
 📌 Overview
 
-This repository contains Python-based utilities designed to interact with TP-Link TAPO security cameras (e.g., C200, C210, C220 models) using their local video stream. It provides tools to capture images, detect people, scan QR codes, create panoramas, and play audio over RTSP/AUDIO streams.
+This repository contains Python-based utilities designed to interact with TP-Link TAPO security cameras (C230) using their local video stream. It provides tools to capture images, detect people, scan QR codes, create panoramas, and play audio over RTSP/AUDIO streams.
 
 ⚠️ This project uses unofficial methods/APIs for TAPO cameras and is not affiliated with TP-Link or the official TAPO app. Expect differences in behavior across firmware versions (RTSP might need enabling in the TAPO app).
 
