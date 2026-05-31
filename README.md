@@ -1,153 +1,322 @@
-TAPO-Camera
+# 🎥 TAPO Camera Toolkit
 
-TAPO-Camera — DC Project
-A collection of Python tools and scripts for interacting with TP-Link TAPO cameras (via RTSP/local stream), including image capture, person detection, panorama stitching, QR scanning, audio playback, and more.
+> A Python-based computer vision and automation toolkit for interacting with **TP-Link TAPO C230 Cameras** through RTSP/local streams.
 
-📌 Overview
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)
+![RTSP](https://img.shields.io/badge/RTSP-Streaming-orange)
 
-This repository contains Python-based utilities designed to interact with TP-Link TAPO security cameras (C230) using their local video stream. It provides tools to capture images, detect people, scan QR codes, create panoramas, and play audio over RTSP/AUDIO streams.
+---
 
-⚠️ This project uses unofficial methods/APIs for TAPO cameras and is not affiliated with TP-Link or the official TAPO app. Expect differences in behavior across firmware versions (RTSP might need enabling in the TAPO app).
+## 📖 Overview
 
-🧠 Key Features
-📷 Camera Interaction
+The **TAPO Camera Toolkit** is a collection of Python utilities developed to leverage the capabilities of **TP-Link TAPO security cameras** using RTSP-based video streams and computer vision techniques.
 
-Capture single frames or continuous image sequences from the camera.
+The project provides tools for:
 
-Use RTSP or local streaming for video feed access.
+* 📷 Capturing images from live camera feeds
+* 🧍 Detecting people in real-time
+* 🔍 Scanning QR codes from video streams
+* 🖼️ Generating panoramic images
+* 🔉 Streaming and processing audio feeds
+* 🏠 Building automation and surveillance workflows
 
-🧍 Person Detection
+This repository serves as a foundation for smart surveillance systems, home automation projects, and computer vision experiments.
 
-Detect people in the camera frame using computer vision.
+> ⚠️ **Disclaimer:** This project is not affiliated with or endorsed by TP-Link. It utilizes RTSP/local stream access and may behave differently across camera models and firmware versions.
 
-🔍 QR Code Scanner
+---
 
-Scan QR codes from the camera feed — useful for automation or scanning tags.
+# ✨ Features
 
-🖼️ Image Panorama
+## 📷 Camera Feed Access
 
-Stitch multiple frames into panoramic images.
+* Connect to TAPO cameras via RTSP.
+* Capture single frames or image sequences.
+* Save snapshots automatically.
 
-🔉 Audio Utilities
+---
 
-Play or capture audio from RTSP/AUDIO streams.
+## 🧍 Human Detection
 
-🧪 Utilities
+* Detect people in live camera feeds using computer vision techniques.
+* Suitable for surveillance and occupancy monitoring.
 
-Welcome message demo.
+---
 
-Additional helper scripts for camera control workflows.
+## 🔍 QR Code Recognition
 
-Note: The scripts are modular and can be integrated into larger automation or surveillance pipelines.
+* Real-time QR code detection and decoding.
+* Useful for:
 
-🗂️ Files & Scripts
-Script	Purpose
-image_capture.py	Capture still frames from camera.
-image_capture+qr.py	Capture + QR scanning.
-person_detection.py	Detect humans in live feed.
-panaroma.py	Create panoramic image from streams.
-3D_model_room.py	(Experimental) 3D model generation.
-play_rtsp_audio.py	Play audio from RTSP/AUDIO source.
-audio.py	Audio utilities.
-qrscan.py	Stand-alone QR scanner.
-welcome_message.py	Initial demo/intro script.
+  * Inventory tracking
+  * Smart home triggers
+  * Location-based automation
 
-Adjust this list to match actual functionality if definitions differ.
+---
 
-🚀 Getting Started
-🔁 Prerequisites
+## 🖼️ Panorama Generation
 
-Make sure you have:
+* Capture multiple frames from the stream.
+* Stitch images together into panoramic views.
 
-Python 3.9+
+---
 
-Camera with RTSP enabled (via TAPO app: Settings → Third-Party Compatibility → ON)
+## 🔉 Audio Streaming Utilities
 
-Local network access to your camera’s IP
+* Access and play RTSP audio streams.
+* Process audio for custom automation workflows.
 
-Required Python packages (listed below)
+---
 
-🧰 Install Dependencies
+## 🧪 Experimental Features
+
+* Basic room reconstruction experiments.
+* 3D environment modeling research.
+
+---
+
+# 📂 Repository Structure
+
+```text
+TAPO-Camera/
+│
+├── image_capture.py          # Capture images from camera feed
+├── image_capture+qr.py       # Capture images and scan QR codes
+├── person_detection.py       # Human detection from live feed
+├── panorama.py              # Panorama generation
+├── qrscan.py                # Standalone QR scanner
+├── audio.py                 # Audio utilities
+├── play_rtsp_audio.py       # RTSP audio playback
+├── 3D_model_room.py         # Experimental 3D room modeling
+├── welcome_message.py       # Demo script
+│
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# 🚀 Getting Started
+
+## 📋 Prerequisites
+
+Before running the project, ensure you have:
+
+* Python 3.9 or newer
+* TP-Link TAPO Camera (tested on C230)
+* RTSP enabled in TAPO App
+* Local network access to the camera
+
+---
+
+## 🔧 Enable RTSP
+
+In the TAPO mobile application:
+
+```text
+Settings
+ └── Advanced Settings
+      └── Third-Party Compatibility
+           └── Enable RTSP
+```
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/TAPO-Camera.git
+
+cd TAPO-Camera
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
+If a requirements file is not available:
 
-If you don’t yet have a requirements.txt file, generate one from installed libs:
-
-pip freeze > requirements.txt
-
-📍 Environment Variables
-
-Set variables for your camera’s credentials and IP:
-
-export TAPO_IP="192.168.1.100"
-export TAPO_USER="your_username"
-export TAPO_PASS="your_password"
-
-
-Alternatively, update variables inside the scripts directly.
-
-▶️ Examples
-Capture a Frame
-python image_capture.py --ip $TAPO_IP --user $TAPO_USER --pass $TAPO_PASS --output frame.jpg
-
-Scan QR in Live Feed
-python image_capture+qr.py --ip $TAPO_IP --user $TAPO_USER --pass $TAPO_PASS
-
-Detect Person
-python person_detection.py --ip $TAPO_IP --user $TAPO_USER --pass $TAPO_PASS
-
-Create Panorama
-python panaroma.py --ip $TAPO_IP --user $TAPO_USER --pass $TAPO_PASS --frames 10
-
-🧩 Integration Ideas
-
-This project can serve as a base for:
-
-Home surveillance systems
-
-Smart notifications on detection
-
-RTSP feeds combined with OpenCV pipelines
-
-QR-based location or tag triggers
-
-📦 Dependencies
-
-Suggested libraries (commonly used):
-
-opencv-python
-numpy
-pyzbar
-ffmpeg/ffmpeg-python
+```bash
+pip install \
+opencv-python \
+numpy \
+pyzbar \
+ffmpeg-python \
 requests
+```
 
+---
 
-Install them via pip:
+# ⚙️ Configuration
 
-pip install opencv-python numpy pyzbar ffmpeg-python requests
+Configure your camera credentials using environment variables.
 
-❓ Troubleshooting
+### Linux / macOS
 
-RTSP not working?
-Check that Third-Party Compatibility is enabled in the official TAPO app. Some cameras disable RTSP by default.
+```bash
+export TAPO_IP="192.168.1.100"
+export TAPO_USER="username"
+export TAPO_PASS="password"
+```
 
-Authentication fails?
-Ensure correct username/password; sometimes cloud/local credentials can differ. Some integrations require cloud password.
+### Windows
 
-📜 License
+```cmd
+set TAPO_IP=192.168.1.100
+set TAPO_USER=username
+set TAPO_PASS=password
+```
 
-This project is MIT Licensed — feel free to modify and distribute.
+---
 
-🤝 Contributing
+# ▶️ Usage Examples
 
-Contributions are welcome! Whether it’s:
+## 📸 Capture a Frame
 
-Bug fixes
+```bash
+python image_capture.py \
+--ip $TAPO_IP \
+--user $TAPO_USER \
+--pass $TAPO_PASS \
+--output frame.jpg
+```
 
-Feature additions
+---
 
-Packaging & examples
+## 🔍 Scan QR Codes
 
-Better documentation
+```bash
+python image_capture+qr.py \
+--ip $TAPO_IP \
+--user $TAPO_USER \
+--pass $TAPO_PASS
+```
 
-Submit a pull request or open an issue
+---
+
+## 🧍 Detect People
+
+```bash
+python person_detection.py \
+--ip $TAPO_IP \
+--user $TAPO_USER \
+--pass $TAPO_PASS
+```
+
+---
+
+## 🖼️ Create a Panorama
+
+```bash
+python panorama.py \
+--ip $TAPO_IP \
+--user $TAPO_USER \
+--pass $TAPO_PASS \
+--frames 10
+```
+
+---
+
+# 💡 Applications
+
+This toolkit can be integrated into:
+
+### 🏠 Smart Home Systems
+
+* Occupancy detection
+* Automated lighting
+* Visitor monitoring
+
+### 🎯 Computer Vision Projects
+
+* Object detection
+* Scene analysis
+* QR-based automation
+
+### 🛡️ Surveillance Solutions
+
+* Motion monitoring
+* Human detection alerts
+* Security camera analytics
+
+### 🤖 Robotics & Automation
+
+* Vision-based navigation
+* Environment monitoring
+* Event-triggered actions
+
+---
+
+# 📚 Core Technologies
+
+| Technology | Purpose                |
+| ---------- | ---------------------- |
+| Python     | Core Development       |
+| OpenCV     | Computer Vision        |
+| NumPy      | Numerical Computing    |
+| RTSP       | Video Streaming        |
+| PyZBar     | QR Detection           |
+| FFmpeg     | Audio/Video Processing |
+
+---
+
+# 🛠️ Troubleshooting
+
+### RTSP Connection Fails
+
+✅ Verify RTSP is enabled in the TAPO App.
+
+✅ Ensure camera and computer are on the same network.
+
+✅ Confirm IP address is correct.
+
+---
+
+### Authentication Errors
+
+✅ Verify username and password.
+
+✅ Check whether local credentials differ from cloud credentials.
+
+---
+
+### Camera Feed Not Opening
+
+✅ Test the RTSP stream in VLC:
+
+```text
+rtsp://username:password@camera_ip:554/stream1
+```
+
+---
+
+# 🔮 Future Improvements
+
+* 🚶 Motion detection
+* 📱 Mobile notifications
+* 🤖 AI-powered object recognition
+* 🗺️ Advanced room mapping
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+You can contribute by:
+
+* 🐛 Reporting bugs
+* ✨ Adding new features
+* 📚 Improving documentation
+* ⚡ Optimizing performance
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
